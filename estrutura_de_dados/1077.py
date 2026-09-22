@@ -1,4 +1,4 @@
-def prioridade(operador):
+def prioridade (operador):
     if operador == "^":
         return 3
     if operador == "*" or operador == "/":
@@ -24,14 +24,14 @@ for _ in range(N):
             while pilha and pilha[-1] != "(":
                 saida.append(pilha.pop())
             if pilha:
-                pilha.pop()
+                pilha.pop()  # Remove the '(' from the stack
         else:
-            while(
-                pilha
+            while (
+                pilha 
                 and pilha[-1] != "("
                 and prioridade(pilha[-1]) >= prioridade(caractere)
             ):
-                saida.append(pilha.pop())  
+                saida.append(pilha.pop())
             pilha.append(caractere)
 
     while pilha:

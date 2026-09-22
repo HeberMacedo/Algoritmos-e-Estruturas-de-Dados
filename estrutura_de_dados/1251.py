@@ -1,8 +1,9 @@
-n = int(input())
+﻿n = int(input())
 
-for caso in range(n):
+for caso in range (n):
     texto = input()
-    frequencia = {}
+
+    frequencia ={}
 
     for caractere in texto:
         codigo = ord(caractere)
@@ -12,12 +13,11 @@ for caso in range(n):
 
         frequencia[codigo] += 1
 
-    caracteres = list(frequencia.keys())
+    caracteres = list(frequencia.keys())    
 
     caracteres.sort(
-        key=lambda codigo: (frequencia[codigo], -codigo)
-    )
-
+        key=lambda codigo:(frequencia[codigo], -codigo)
+        )
     for codigo in caracteres:
         print(codigo, frequencia[codigo])
 
