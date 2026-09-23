@@ -1,35 +1,36 @@
+def pode_ligar(a, b):
+    return (a == 'B' and b == 'S') or \
+           (a == 'S' and b == 'B') or \
+           (a == 'C' and b == 'F') or \
+           (a == 'F' and b == 'C')
+
+
+def par(a, b):
+    return pode_ligar(a, b)
+
+
 while True:
-    X, Y, P = map(int, input().split())
+    try:
+        fita = input().strip()
+    except EOFError:
+        break   
+    n = len(fita)
+    dp = [[0] * n for _ in range(n)]
+    for tamanho in range(2, n + 1, 2):
+        for i in range(n - tamanho + 1):
+            j = i + tamanho - 1
 
-    if X == 0 and Y == 0 and P == 0:
-        break
+            melhor = dp[i + 1][j]
+            for k in range(i + 1, j + 1):
+                if pode_ligar(fita[i], fita[k]):
 
-    Q = int(input())
-
-    campo = [[0] * Y for _ in range(X)]
-
-    saida = []
-
-    for _ in range(Q):
-        partes = input().split()
-
-        if partes[0] == "A":
-            N, Xc, Yc = int(partes[1]), int(partes[2]), int(partes[3])
-            campo[Xc][Yc] += N
-        else:
-            X1, Y1, X2, Y2 = int(partes[1]), int(partes[2]), int(partes[3]), int(partes[4])
-
-            if X1 > X2:
-                X1, X2 = X2, X1
-            if Y1 > Y2:
-                Y1, Y2 = Y2, Y1
-
-            total = 0
-            for x in range(X1, X2 + 1):
-                for y in range(Y1, Y2 + 1):
-                    total += campo[x][y]
-
-            saida.append(str(total * P))
-
-    print("\n".join(saida))
-    print()
+                    esquerda = 0
+                    direita = 0
+                    if i + 1 <= k - 1:
+                        esquerda = dp[i + 1][k - 1]
+                    if k + 1 <= j:
+                        direita = dp[k + 1][j]
+                    total = 1 + esquerda + direita
+                    melhor = max(melhor, total)
+            dp[i][j] = melhor
+    print(dp[0][n - 1])
