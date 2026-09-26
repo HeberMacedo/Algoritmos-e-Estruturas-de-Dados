@@ -1,7 +1,7 @@
 casos = int(input())
 
 for caso in range(casos):
-    M, c = map(int, input().split())
+    M, C = map(int, input().split())
 
     tabela = [[] for _ in range(M)]
 
@@ -13,10 +13,10 @@ for caso in range(casos):
         tabela[posicao].append(valor)
 
     for i in range(M):
-        print(f"{i} -> ", end="")
+        print(f"{i} ->", end="")
 
         for valor in tabela[i]:
-            print(f"{valor} -> ", end="")
+            print(f" {valor} ->", end="")
 
         print()
     if caso < casos - 1:

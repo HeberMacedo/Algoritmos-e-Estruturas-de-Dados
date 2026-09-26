@@ -23,23 +23,23 @@ while True:
             consumoporpessoa, 0
         ) + pessoas
 
-        valores =sorted(consumo.items())
+    valores = sorted(consumo.items())
 
-        print(f"cidade# {caso}:")
+    print(f"Cidade# {caso}:")
 
-        resultado = []
+    resultado = []
 
-        for consumomedio, pessoas in valores:
-            resultado.append(
-                f"{pessoas}-{consumomedio}"
-            )
+    for consumomedio, pessoas in valores:
+        resultado.append(
+            f"{pessoas}-{consumomedio}"
+        )
 
-        print(" ".join(resultado))
+    print(" ".join(resultado))
 
-        media = totalconsumo // totalpessoas
+    media = totalconsumo / totalpessoas
 
-        print(f"consumo medio: {media:.2f} m3.")
+    print(f"Consumo médio: {media:.2f} m³")
 
-        print()
+    print()
 
-        caso += 1 
+    caso += 1

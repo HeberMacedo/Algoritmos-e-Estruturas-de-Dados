@@ -14,7 +14,7 @@ for _ in range(N):
                 i += 1
             quantidade = i - inicio
 
-            if quantidade >= 3:
+            if quantidade > 3:
                 while quantidade > 255:
                     resultado.append('#')
                     resultado.append(chr(255))
@@ -24,28 +24,28 @@ for _ in range(N):
                 resultado.append('#')
                 resultado.append(chr(quantidade))
             else:
-                resultado.append("0" * quantidade)
+                resultado.append('0' * quantidade)
 
-        elif texto[i] == ' ':
-             inicio = i
+        elif texto[i] == " ":
+            inicio = i
 
-        while i < len(texto) and texto[i] == ' ':
-            i += 1
-        quantidade = i - inicio
+            while i < len(texto) and texto[i] == " ":
+                i += 1
+            quantidade = i - inicio
 
-        if quantidade >= 3:
-            while quantidade > 255:
+            if quantidade >= 3:
+                while quantidade > 255:
+                    resultado.append('$')
+                    resultado.append(chr(255))
+
+                    quantidade -= 255
+
                 resultado.append('$')
-                resultado.append(chr(255))
-
-                quantidade -= 255
-
-            resultado.append('$')
-            resultado.append(chr(quantidade))
+                resultado.append(chr(quantidade))
+            else:
+                resultado.append(' ' * quantidade)
         else:
-            resultado.append(" " * quantidade)
-    else:
-         resultado.append(texto[i])
-         i += 1
+            resultado.append(texto[i])
+            i += 1
 
-         print("".join(resultado))
+    print(''.join(resultado))

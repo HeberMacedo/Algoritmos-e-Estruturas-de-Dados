@@ -1,19 +1,19 @@
-try:
-    while True:
-        expressao = input()
+n = int(input())
+for _ in range(n):
 
-        pilha = []
-        contagem = 0
+    linha = input()
+    pilha = []
+    diamantes = 0
 
-        for caractere in expressao:
-            if caractere == "<":
-                pilha.append(caractere)
-            elif caractere == ">":
-                if len(pilha) > 0:
-                    pilha.pop()
-                    contagem += 1
+    for caractere in linha:
 
-        print(contagem)
+        if caractere == '<':
+            pilha.append('<')
 
-except EOFError:
-    pass
+        elif caractere == '>':
+
+            if pilha:
+                pilha.pop()
+                diamantes += 1
+
+    print(diamantes)
